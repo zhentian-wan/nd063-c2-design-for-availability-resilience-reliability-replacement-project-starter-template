@@ -1,0 +1,56 @@
+[root@ip-10-1-10-145 ec2-user]# mysql -u admin -p -h udacity.crzba8oefe5s.us-east-1.rds.amazonaws.com
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 163
+Server version: 8.0.23 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> create database udacity
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+
+MySQL [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.00 sec)
+
+MySQL [(none)]> use udacity
+Database changed
+MySQL [udacity]> CREATE TABLE MyGuests (
+    -> id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    -> firstname VARCHAR(30) NOT NULL,
+    -> lastname VARCHAR(30) NOT NULL,
+    -> email VARCHAR(50),
+    -> reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    -> )
+    -> ;
+Query OK, 0 rows affected, 1 warning (0.12 sec)
+
+MySQL [udacity]> CREATE TABLE authors (id INT, name VARCHAR(20), email VARCHAR(20));
+Query OK, 0 rows affected (0.08 sec)
+
+MySQL [udacity]> INSERT INTO authors (id,name,email) VALUES(1,"Vivek","xuz@abc.com");
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> INSERT INTO authors (id,name,email) VALUES(2,"Priya","p@gmail.com");
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> SELECT * FROM authors;
++------+-------+-------------+
+| id   | name  | email       |
++------+-------+-------------+
+|    1 | Vivek | xuz@abc.com |
+|    2 | Priya | p@gmail.com |
++------+-------+-------------+
+2 rows in set (0.00 sec)

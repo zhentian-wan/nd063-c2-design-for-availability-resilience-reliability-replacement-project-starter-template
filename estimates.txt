@@ -1,0 +1,15 @@
+The source database udacity is created in us-east-1 with multiple AZ while the replica is created in us-east-2.
+
+RTO: depends on how quickly to restore a DB instance from the copied snapshot.
+RPO: The maximum acceptable amount of time since the last data recovery point.
+
+For multi-AZ: auto failover takes under 1 min to finish
+Both RTO and RPO would be 1 min.
+
+For region: When master go down
+1. It take around 10min for reponsable person to get notice.
+2. Need to manully promote read replica to be new master take around 5 mins.
+3. Restore data from snapshot + copy snaphsot to secondary region, 30mins
+4. Manully switch new Master RDS domain.
+RTO would be around 1 hour.
+RPO single region outage - 24 hours (as backup is on a daily basis ie.every 24 hours)
